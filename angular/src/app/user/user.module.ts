@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -19,7 +20,8 @@ import { MailAdminComponent } from './mail-admin/mail-admin.component';
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule, 
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }
