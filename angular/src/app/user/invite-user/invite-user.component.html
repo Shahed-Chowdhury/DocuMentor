@@ -3,17 +3,25 @@
         <h3 class="my-auto">Invite user</h3>
     </div>
     <div class="card-body">
-        <form>
+        {{inviteUserForm.value | json}}
+        {{inviteUserForm.status | json}}
+        <form [formGroup]="inviteUserForm">
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <label for="email">Email address</label>
+                <input type="text" class="form-control" id="email" placeholder="Enter email" formControlName="email">
+                <span class="err-msg">
+                    <span *ngIf="!valid && Email.hasError('required')">* Email is required</span>
+                    <span *ngIf="!valid && inviteUserForm.hasError('notmatched') && !Email.hasError('required')">* Invalid email address</span>
+                </span>
             </div>
             <div class="form-group mt-2">
-                <label for="exampleInputPassword1">Message</label>
-                <textarea name="" id="exampleInputPassword1" cols="30" rows="5" style="resize: none;" placeholder="Send message" class="w-100 form-control"></textarea>
+                <label for="message">Message</label>
+                <textarea id="message" cols="30" rows="5" style="resize: none;"
+                    placeholder="Send message" class="w-100 form-control" formControlName="message">
+                </textarea>
             </div>
-            <input type="reset" class="btn btn-danger mt-2" value="Reset">
-            <button type="submit" class="btn btn-primary mt-2 mx-2">Submit</button>
+            <button class="btn btn-danger mt-2" (click)="resetForm()">Reset</button>
+            <button  class="btn btn-primary mt-2 mx-2" (click)="onSubmit()">Send mail</button>
         </form>
     </div>
 </div>
