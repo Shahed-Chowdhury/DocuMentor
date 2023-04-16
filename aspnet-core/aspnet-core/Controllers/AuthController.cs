@@ -9,11 +9,11 @@ namespace aspnet_core.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly MongoDBService _mongoDBService;
+        private readonly UserService _userServices;
 
-        public AuthController(MongoDBService mongoDBService)
+        public AuthController(UserService UserServices)
         {
-            _mongoDBService = mongoDBService;
+            _userServices = UserServices;
         }
 
         [HttpPost("Register")]
@@ -21,7 +21,7 @@ namespace aspnet_core.Controllers
         {
             try
             {
-                await _mongoDBService.CreateUser(dto);
+                await _userServices.CreateUser(dto);
                 return Ok();
             }
             catch (Exception ex)
@@ -35,7 +35,7 @@ namespace aspnet_core.Controllers
         {
             try
             {
-                var resp = await _mongoDBService.GetAllUser();
+                var resp = await _userServices.GetAllUser();
                 return Ok(new { Status = "Success", data = resp });
             }
             catch(Exception ex)

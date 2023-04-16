@@ -5,13 +5,15 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { InviteUserComponent } from './invite-user/invite-user.component';
 import { MailAdminComponent } from './mail-admin/mail-admin.component';
+import { RoleComponent } from './role/role.component';
 
 const routes: Routes = [
   { path: '', component: UserComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'invite-user', component: InviteUserComponent},
-  { path: 'send-mail-admin', component: MailAdminComponent}
+  { path: 'send-mail-admin', component: MailAdminComponent},
+  { path: 'role', component: RoleComponent}
 ];
 
 @NgModule({
