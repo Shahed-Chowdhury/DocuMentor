@@ -2,6 +2,10 @@
     width: 50%;
 }
 
+.err-msg{
+    color: red;
+}
+
 @media only screen and (max-width: 1000px) {
     .card{
         width: 80%;

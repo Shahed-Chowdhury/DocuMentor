@@ -1,4 +1,5 @@
-﻿using aspnet_core.DTOs.Roles;
+﻿using Amazon.Runtime.SharedInterfaces;
+using aspnet_core.DTOs.Roles;
 using aspnet_core.Models;
 using AutoMapper;
 using Microsoft.Extensions.Options;
@@ -41,6 +42,13 @@ namespace aspnet_core.Services
             var mapper = new Mapper(config);
             var resp = await _roleCollection.AsQueryable().ToListAsync();
             return mapper.Map<List<RoleDTO>>(resp);
+        }
+
+        public async Task<Boolean> DeleteRole(string id)
+        {
+            var resp = _roleCollection.DeleteOneAsync(a => a.Id == id);
+            if (resp.Result.DeletedCount > 0) return true;
+            return false;
         }
     }
 }

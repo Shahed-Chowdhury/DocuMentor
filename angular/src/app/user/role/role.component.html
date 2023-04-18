@@ -3,16 +3,19 @@
         <h3 class="my-auto">User role</h3>
     </div>
     <div class="card-body">
-        <form>
+        <form [formGroup]="roleForm">
             <div class="form-group">
                 <label for="email">Role</label>
-                <input type="text" class="form-control" id="role" placeholder="Enter role">
+                <input type="text" class="form-control" id="role" placeholder="Enter role" formControlName="name">
+                <span class="err-msg" *ngIf="Name.touched && Name.invalid">
+                    * Name is required
+                </span>
             </div>
-            <button class="btn btn-primary mt-2">Add roles</button>
+            <button [disabled]="roleForm.invalid" (click)="addRole()" class="btn btn-primary mt-2">Add roles</button>
         </form>
     </div>
 </div>
-<div class="card mx-auto mt-5">
+<div  class="card mx-auto mt-5">
     <div class="card-header p-3">
         <h3 class="my-auto">All roles</h3>
     </div>
@@ -27,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let role of roles;let i = index">
+                <tr *ngFor="let role of roles.data;let i = index">
                     <th scope="row">{{i+1}}</th>
                     <td>{{role.name}}</td>
                     <td><button class="btn btn-secondary">Update</button></td>

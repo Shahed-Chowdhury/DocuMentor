@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using aspnet_core.DTOs.Roles;
 
 namespace aspnet_core.DTOs.Users
 {
@@ -12,5 +12,7 @@ namespace aspnet_core.DTOs.Users
         public string Password { get; set; } = null!;
         public string? PhoneNumber { get; set; }
         public string? Address { get; set; }
+        public string Role { get; set; } = null!;
+        public List<RoleDTO> Roles { get; set; } = null!;
     }
 }

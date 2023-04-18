@@ -2,7 +2,10 @@
 using aspnet_core.Models;
 using AutoMapper;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using Newtonsoft.Json;
 
 namespace aspnet_core.Services
 {
@@ -44,9 +47,13 @@ namespace aspnet_core.Services
 
             var mapper = new Mapper(config);
 
-            var value = await _userCollection.AsQueryable().ToListAsync();
+            var value = await _userCollection.Aggregate().Lookup("role", "Role", "_id", "role").ToListAsync(); // BSON object
 
-            return mapper.Map<List<UserDTO>>(value);
+            var jsonString = value.ToBsonDocument();
+
+            //var message = JsonConvert.DeserializeObject<List<UserDTO>>(jsonString);
+
+            return new List<UserDTO>();
         }
     }
 }

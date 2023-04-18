@@ -14,5 +14,6 @@ namespace aspnet_core.DTOs.Users
         [RegularExpression(@"^(?:(?:\+|00)88|01)?\d{11}$", ErrorMessage = "Number should be bangladeshi")]
         public string? PhoneNumber { get; set; }
         public string? Address { get; set; }
+        public string Role { get; set; } = null!;
     }
 }

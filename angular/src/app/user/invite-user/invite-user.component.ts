@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
 import CustomValidators from 'src/app/shared/CustomValidators';
 
@@ -11,8 +11,9 @@ export class InviteUserComponent implements OnInit {
 
   inviteUserForm!: FormGroup
   valid: boolean = true
+  fb = inject(FormBuilder)
 
-  constructor(private fb: FormBuilder) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.InviteUserFormBuilder()

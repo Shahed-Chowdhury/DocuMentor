@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using aspnet_core.DTOs.Roles;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -19,6 +20,9 @@ namespace aspnet_core.Models
         [RegularExpression(@"^(?:(?:\+|00)88|01)?\d{11}$", ErrorMessage = "Number should be bangladeshi")]
         public string? PhoneNumber { get; set; }
         public string? Address { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Role { get; set; } = null!;
+        public List<Role> Roles { get; set; }
 
     }
 }

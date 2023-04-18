@@ -44,5 +44,20 @@ namespace aspnet_core.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteOne(string id)
+        {
+            try
+            {
+                var resp = await _roleService.DeleteRole(id);
+                if(resp == true) return NoContent();
+                throw new Exception("Role already deleted");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

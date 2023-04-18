@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CreateUpdateRoleDTO, RoleDTO } from '../models/Role/role-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,6 @@ export class ApiService {
     });
   }
 
-  getRoles(){ return this.httpclient.get(`${this.Api_URL}/roles`)}
+  getRoles(){ return this.httpclient.get<RoleDTO>(`${this.Api_URL}/roles`)}
+  addRoles(data: CreateUpdateRoleDTO){ return this.httpclient.post(`${this.Api_URL}/roles`, data, {headers: this.headers })}
 }
