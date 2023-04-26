@@ -12,6 +12,7 @@ namespace aspnet_core.Services
     {
         protected readonly IMongoCollection<User>? _userCollection;
         protected readonly IMongoCollection<Role>? _roleCollection;
+        protected readonly IMongoCollection<InvitedUser>? _invitedUserCollection;
 
         public MongoDBService(IOptions<MongoDBSettings> mongoDBSettings)
         {
@@ -19,6 +20,7 @@ namespace aspnet_core.Services
             IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
             _userCollection = database.GetCollection<User>(mongoDBSettings.Value.CollectionName);
             _roleCollection = database.GetCollection<Role>(mongoDBSettings.Value.CollectionName2);
+            _invitedUserCollection = database.GetCollection<InvitedUser>(mongoDBSettings.Value.CollectionName3);
         }
     }
 }

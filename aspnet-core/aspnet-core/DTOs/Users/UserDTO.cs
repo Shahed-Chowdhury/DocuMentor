@@ -1,4 +1,5 @@
 ﻿using aspnet_core.DTOs.Roles;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace aspnet_core.DTOs.Users
 {
@@ -9,10 +10,9 @@ namespace aspnet_core.DTOs.Users
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public string Email { get; set; } = null!;
-        public string Password { get; set; } = null!;
+        //public string Password { get; set; } = null!;
         public string? PhoneNumber { get; set; }
         public string? Address { get; set; }
-        public string Role { get; set; } = null!;
-        public List<RoleDTO> Roles { get; set; } = null!;
+        public RoleDTO Roles { get; set; } = null!;
     }
 }

@@ -1,5 +1,6 @@
 using aspnet_core.Models;
 using aspnet_core.Services;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("Mo
 builder.Services.AddSingleton<MongoDBService>();
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<RoleService>();
+builder.Services.AddSingleton<InvitedUserServices>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

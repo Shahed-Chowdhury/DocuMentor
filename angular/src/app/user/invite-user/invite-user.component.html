@@ -14,11 +14,13 @@
                 </span>
             </div>
             <div class="form-group">
-                <label for="email">Role</label>
-                <input type="text" class="form-control" id="email" placeholder="Enter email" formControlName="email">
+                <label for="role">Role</label>
+                <select class="form-select" id="role" aria-label="Default select example" formControlName="role">
+                    <option selected disabled [value]="null">Select roles</option>
+                    <option *ngFor="let role of roles" [value]="role.id">{{role.name.charAt(0) + role.name.slice(1).toLowerCase()}}</option>
+                </select>
                 <span class="err-msg">
-                    <span *ngIf="!valid && Email.hasError('required')">* Email is required</span>
-                    <span *ngIf="!valid && inviteUserForm.hasError('notmatched') && !Email.hasError('required')">* Invalid email address</span>
+                    <span *ngIf="!valid && Role.hasError('required')">* Role is required</span>
                 </span>
             </div>
             <div class="form-group mt-2">
@@ -28,7 +30,7 @@
                 </textarea>
             </div>
             <button class="btn btn-danger mt-2" (click)="resetForm()">Reset</button>
-            <button class="btn btn-primary mt-2 mx-2" (click)="onSubmit()">Send mail</button>
+            <button class="btn btn-primary mt-2 mx-2" (click)="onSubmit()">Invite</button>
         </form>
     </div>
 </div>

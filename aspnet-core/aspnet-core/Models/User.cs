@@ -22,7 +22,7 @@ namespace aspnet_core.Models
         public string? Address { get; set; }
         [BsonRepresentation(BsonType.ObjectId)]
         public string Role { get; set; } = null!;
+        [BsonElement("role")] // element name has to mentioned for proper mapping
         public List<Role> Roles { get; set; }
-
     }
 }
